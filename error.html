@@ -1,0 +1,1 @@
+{% extends 'base.html' %}{% block title %}{{ code }} — Guardian Vault{% endblock %}{% block content %}<div class="page-shell error-shell"><div class="error-code">{{ code }}</div><h1>We couldn't complete that request.</h1><p>{{ message }}</p><a class="button" href="{{ url_for('dashboard') if current_user else url_for('index') }}">Return to Guardian Vault ↗</a></div>{% endblock %}

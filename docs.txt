@@ -1,0 +1,21 @@
+IMPLEMENTATION STATUS — INITIAL SCAFFOLD
+
+Implemented in source:
+- Flask application with SQLite schema initialization.
+- Password-hashed registration and login.
+- CSRF tokens for POST forms.
+- Per-user case ownership checks on protected case routes.
+- Case CRUD (create, view, edit), child records, timeline records.
+- Private file uploads and authenticated download endpoint.
+- Case timeline, date/type filters, and workspace search.
+- Responsive dashboard and mobile-oriented styles.
+- Basic integration tests for registration, case creation, case isolation, and record search.
+
+Not yet verified in this environment:
+- Runtime tests: Flask is not installed in the current execution environment and package installation was unavailable due to network restrictions. Python syntax compilation passed, but the app and tests must be run after installing requirements.txt.
+- Production deployment and HTTPS.
+- Persistent volume configuration on Replit.
+- Backup and restore.
+- Malware scanning, OCR, transcription, calendar synchronization, notifications, AI features, export packets, audit history, multi-factor authentication, password reset, and advanced sharing.
+
+This is an MVP foundation, not a production-ready application. Do not use for highly sensitive live case data until the remaining security and operational controls are implemented and verified.

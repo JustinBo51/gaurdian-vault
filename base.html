@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#142e35">
+  <title>{% block title %}Guardian Vault{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="{{ url_for('index') }}"><span class="brand-mark">G<span>V</span></span><span>GUARDIAN <b>VAULT</b><small>YOUR CASE. YOUR RECORD.</small></span></a>
+  {% if current_user %}
+  <nav class="nav-links"><a href="{{ url_for('dashboard') }}">Overview</a><a href="{{ url_for('timeline') }}">Timeline</a><a href="{{ url_for('search') }}">Search</a></nav>
+  <div class="account"><span class="avatar">{{ current_user['display_name'][:1]|upper }}</span><span class="account-name">{{ current_user['display_name'] }}</span><form method="post" action="{{ url_for('logout') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token }}"><button class="link-button" type="submit">Sign out</button></form></div>
+  {% else %}<div class="top-actions"><a class="nav-login" href="{{ url_for('login') }}">Sign in</a><a class="button button-small" href="{{ url_for('register') }}">Create account <span>↗</span></a></div>{% endif %}
+</header>
+{% with messages = get_flashed_messages(with_categories=true) %}{% if messages %}<div class="flash-wrap">{% for category,message in messages %}<div class="flash flash-{{ category }}">{{ message }}</div>{% endfor %}</div>{% endif %}{% endwith %}
+<main>{% block content %}{% endblock %}</main>
+<footer class="footer"><span>GUARDIAN VAULT</span><span>Organize your records. Keep your story clear.</span><span>Private workspace · MVP foundation</span></footer>
+</body></html>
